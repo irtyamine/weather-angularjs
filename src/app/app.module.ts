@@ -10,6 +10,9 @@ import {HttpModule} from '@angular/http';
 
 const appRouters=[
   {
+    path:'',component: HomeComponent
+  },
+  {
     path:'home',component: HomeComponent
   },
   {

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
+import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'
@@ -11,5 +12,9 @@ export class WeatherService {
 
   constructor(private http:Http) {
     this.url='http://api.openweathermap.org/data/2.5/weather'
+   }
+
+   getWeather(long,lat){
+     return this.http.get(url: this.url+'?lat='+lat+'&lon='+long+'&appid='+this.apiKey)
    }
 }
