@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { SettingComponent } from './setting/setting.component';
 import {WeatherService} from './weather.service';
 import {RouterModule} from '@angular/router';
+import {HttpModule} from '@angular/http';
 
 const appRouters=[
   {
@@ -24,7 +25,9 @@ const appRouters=[
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRouters)
+    HttpModule,
+    RouterModule.forRoot(appRouters),
+    
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent]
