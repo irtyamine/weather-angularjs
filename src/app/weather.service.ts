@@ -11,14 +11,12 @@ export class WeatherService {
 
   apiKey='53f9d8e4213222cf517d86dc406d67fc';
   url;
+  lng;
+  lat;
 
 
   constructor(private http:Http) {
     this.url='http://api.openweathermap.org/data/2.5/weather'
-   }
-
-   getWeather(lng,lat){
-     return this.http.get(this.url+'?lat='+lat+'&lon='+lng+'&appid='+this.apiKey).pipe(map(res => res.json()));
    }
 
    geoFindMe() {
@@ -43,5 +41,9 @@ export class WeatherService {
     console.log("<p>Locating…</p>");
   
     navigator.geolocation.getCurrentPosition(success, error);
+  }
+
+  getWeather(lng,lat){
+    return this.http.get(this.url+'?lat='+lat+'&lon='+lng+'&appid='+this.apiKey).pipe(map(res => res.json()));
   }
 }
