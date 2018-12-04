@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
-// import 'rxjs/add/operator/map';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,8 @@ export class WeatherService {
    }
 
    getWeather(lng,lat){
-     return this.http.get(this.url+'?lat='+lat+'&lon='+lng+'&appid='+this.apiKey)
+     return this.http.get(this.url+'?lat='+lat+'&lon='+lng+'&appid='+this.apiKey);
+    // console.log("toasty",lng,' ', lat);
    }
 
    geoFindMe() {
