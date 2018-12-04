@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
     Longitude: 18.5058874
   };
 
+  weather:any;
+
   constructor(private _weatherService: WeatherService) {}
 
   ngOnInit() {
@@ -20,6 +22,7 @@ export class HomeComponent implements OnInit {
       .getWeather(this.location.Longitude, this.location.Latitude)
       .subscribe(response => {
         console.log(response);
+        this.weather=response;
       });
   }
 

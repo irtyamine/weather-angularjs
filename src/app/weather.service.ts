@@ -19,7 +19,6 @@ export class WeatherService {
 
    getWeather(lng,lat){
      return this.http.get(this.url+'?lat='+lat+'&lon='+lng+'&appid='+this.apiKey).pipe(map(res => res.json()));
-    // console.log("toasty",lng,' ', lat);
    }
 
    geoFindMe() {
