@@ -8,7 +8,7 @@ import { WeatherService } from "../weather.service";
 })
 export class HomeComponent implements OnInit {
   // location = {
-  //   Latitude: this.,
+  //   Latitude: -31.886734,
   //   Longitude: 18.5058874
   // };
 
@@ -17,9 +17,10 @@ export class HomeComponent implements OnInit {
   constructor(private _weatherService: WeatherService) {}
 
   ngOnInit() {
+    console.log('this is it hopefully',this._weatherService.location);
     this._weatherService.geoFindMe();
     this._weatherService
-      .getWeather(this._weatherService.lng, this._weatherService.lat)
+      .getWeather(this._weatherService.location.Longitude, this._weatherService.location.Latitude)
       .subscribe(response => {
         console.log(response);
         this.weather=response;
