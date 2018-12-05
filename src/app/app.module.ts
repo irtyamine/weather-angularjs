@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { CurrentWeather } from './current-weather';
 import {WeatherService} from './weather.service';
 import {RouterModule} from '@angular/router';
 import {HttpModule} from '@angular/http';
@@ -19,7 +20,8 @@ const appRouters=[
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    CurrentWeather
   ],
   imports: [
     BrowserModule,
