@@ -7,24 +7,33 @@ import { WeatherService } from "../weather.service";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  // location = {
-  //   Latitude: -31.886734,
-  //   Longitude: 18.5058874
-  // };
+  location;
 
-  weather:any;
+  weather: any;
 
   constructor(private _weatherService: WeatherService) {}
 
   ngOnInit() {
-    console.log('this is it hopefully',this._weatherService.location);
-    this._weatherService.geoFindMe();
-    this._weatherService
-      .getWeather(this._weatherService.location.Longitude, this._weatherService.location.Latitude)
-      .subscribe(response => {
-        console.log(response);
-        this.weather=response;
-      });
-  }
+    if (!navigator.geolocation) {
+      console.log("<p>Geolocation is not supported by your browser</p>");
+      return;
+    }
 
+    const success = pos => {
+      this.location = pos.coords;
+      let lat = pos.coords.latitude;
+      const lon = pos.coords.longitude;
+      this._weatherService.getWeather(lon, lat).subscribe(response => {
+        this.weather = response;
+        console.log(
+          "this is the silly thing i was trying to do ",
+          this.weather.weather[0].description
+        );
+      });
+    };
+    function error() {
+      console.log("Unable to retrieve your location");
+    }
+    navigator.geolocation.getCurrentPosition(success, error);
+  }
 }
