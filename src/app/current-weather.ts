@@ -6,3 +6,5 @@ export class CurrentWeather {
                 public tempMax:string,
                 public tempMin:string){}
 }
+
+// https://www.youtube.com/watch?v=zviywN8-eNA&index=6&list=PLONAys1AYOAmZ27U0eAerFlHkUXLa5cii

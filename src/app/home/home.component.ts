@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { WeatherService } from "../weather.service";
+import {CurrentWeather} from '../current-weather';
 
 @Component({
   selector: "app-home",
@@ -7,7 +8,7 @@ import { WeatherService } from "../weather.service";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  location;
+  current:CurrentWeather;
 
   weather: any;
 
@@ -20,15 +21,19 @@ export class HomeComponent implements OnInit {
     }
 
     const success = pos => {
-      this.location = pos.coords;
       let lat = pos.coords.latitude;
       const lon = pos.coords.longitude;
-      this._weatherService.getWeather(lon, lat).subscribe(response => {
+      this._weatherService.getWeather(lon, lat)
+        .subscribe(
+          response => {
         this.weather = response;
-        console.log(
-          "this is the silly thing i was trying to do ",
-          this.weather.weather[0].description
-        );
+        console.log("this is the silly thing i was trying to do ",response);
+        this.weather = new CurrentWeather(response.name,
+                                            response.main.temp,
+                                            response.weather[0].icon,
+                                            response.weather[0].description,
+                                            response.main.temp_max,
+                                            response.main.temp_min)
       });
     };
     function error() {
