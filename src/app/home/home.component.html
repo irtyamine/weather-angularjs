@@ -1,8 +1,10 @@
 <div class="container">
 
   <div class="info">
-    <h1 class="primary">Area : {{ myWeather.cityName }}</h1>
-    <h1 class="primary">Weather : {{ myWeather.temp }}</h1>
+    <h1 class="primary">Area : {{ weather.cityName }}</h1>
+    <h2 class="primary">Weather : {{ weather.temp }}</h2>
   </div>
+  <h3>{{ weather.weatherDescription }}</h3>
+  <h4>Max: {{ weather.tempMax }}</h4>
 
 </div>

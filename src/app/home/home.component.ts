@@ -8,7 +8,7 @@ import {CurrentWeather} from '../current-weather';
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  current:CurrentWeather;
+  myWeather:CurrentWeather;
 
   weather: any;
 
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
           response => {
         this.weather = response;
         console.log("this is the silly thing i was trying to do ",response);
-        this.weather = new CurrentWeather(response.name,
+        this.myWeather = new CurrentWeather(response.name,
                                             response.main.temp,
                                             response.weather[0].icon,
                                             response.weather[0].description,
