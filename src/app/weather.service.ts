@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
 import { map } from "rxjs/operators";
+import { Forecast } from './current/forecast.model'
 
 @Injectable(
   {
-  providedIn: 'root'
-}
+    providedIn: 'root'
+  }
 )
 export class WeatherService {
   
@@ -16,7 +17,12 @@ export class WeatherService {
     this.url='http://api.openweathermap.org/data/2.5/weather'
    }
 
-  getWeather(lon,lat){
-     return this.http.get(this.url+'?lat='+lat+'&lon='+lon+'&appid='+this.apiKey).pipe(map(res => res.json()));
+  getWeather(lon, lat): Promise<Forecast> {
+     return this.http.get(
+       `${this.url}?lat=${lat}&lon=${lon}&appid=${this.apiKey}`)
+       .toPromise()
+       .then((response) => {
+        return response.json() as Forecast;
+       })
    }
 }
