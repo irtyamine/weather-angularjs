@@ -1,11 +1,22 @@
 import { Injectable } from '@angular/core';
-import { CurrentWeather } from './current-weather';
+import {Http} from '@angular/http';
+import { map } from "rxjs/operators";
 
-@Injectable({
+@Injectable(
+  {
   providedIn: 'root'
-})
+}
+)
 export class WeatherService {
-  curent:CurrentWeather
+  
+  apiKey='53f9d8e4213222cf517d86dc406d67fc';
+  url;
 
-  constructor() { }
+  constructor(private http:Http) {
+    this.url='http://api.openweathermap.org/data/2.5/weather'
+   }
+
+  getWeather(lon,lat){
+     return this.http.get(this.url+'?lat='+lat+'&lon='+lon+'&appid='+this.apiKey).pipe(map(res => res.json()));
+   }
 }
