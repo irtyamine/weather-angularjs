@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Http} from '@angular/http';
-import { Forecast } from '../forecast/forecast.model'
+import { Forecast } from '../models/forecast.model'
 
 @Injectable(
   {
