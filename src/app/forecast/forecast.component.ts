@@ -1,20 +1,17 @@
 import { Component, OnInit } from "@angular/core";
-import { WeatherService } from "../weather.service";
-import {CurrentWeather} from "../current-weather";
-import { LoaderService } from "../loader.service";
+import { WeatherService } from "../services/weather.service";
 import { Forecast } from './forecast.model';
 
 @Component({
-  selector: "app-current",
-  templateUrl: "./current.component.html",
-  styleUrls: ["./current.component.scss"]
+  selector: "app-Forecast",
+  templateUrl: "./Forecast.component.html",
+  styleUrls: ["./Forecast.component.scss"]
 })
-export class CurrentComponent implements OnInit {
-  myWeather: CurrentWeather;
+export class ForecastComponent implements OnInit {
   error: string = '';
   forecast: Forecast;
 
-  constructor(private _weatherService: WeatherService, private _loaderService: LoaderService) {}
+  constructor(private _weatherService: WeatherService) {}
 
   ngOnInit() {
     
