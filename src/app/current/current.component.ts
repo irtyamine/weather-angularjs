@@ -1,20 +1,22 @@
 import { Component, OnInit } from "@angular/core";
 import { WeatherService } from "../weather.service";
-import {CurrentWeather} from '../current-weather';
+import {CurrentWeather} from "../current-weather";
+import { LoaderService } from "../loader.service";
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.component.html",
-  styleUrls: ["./home.component.css"]
+  selector: "app-current",
+  templateUrl: "./current.component.html",
+  styleUrls: ["./current.component.css"]
 })
-export class HomeComponent implements OnInit {
+export class CurrentComponent implements OnInit {
   myWeather:CurrentWeather;
 
   weather: any;
 
-  constructor(private _weatherService: WeatherService) {}
+  constructor(private _weatherService: WeatherService, public _loaderService: LoaderService) {}
 
   ngOnInit() {
+    
     if (!navigator.geolocation) {
       console.log("<p>Geolocation is not supported by your browser</p>");
       return;
@@ -27,6 +29,7 @@ export class HomeComponent implements OnInit {
         .subscribe(
           response => {
         this.weather = response;
+        this._loaderService.display(false);
         console.log("this is the silly thing i was trying to do ",response);
         this.myWeather = new CurrentWeather(response.name,
                                             response.main.temp,

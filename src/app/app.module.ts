@@ -1,33 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { CurrentWeather } from './current-weather';
-import {WeatherService} from './weather.service';
-import {RouterModule} from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { CurrentComponent } from './current/current.component';
+import { WeatherService } from './weather.service';
 import {HttpModule} from '@angular/http';
-
-const appRouters=[
-  {
-    path:'',component: HomeComponent
-  },
-  {
-    path:'home',component: HomeComponent
-  }
-];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    CurrentWeather
+    HeaderComponent,
+    CurrentComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(appRouters),
-    
+    AppRoutingModule
   ],
   providers: [WeatherService],
   bootstrap: [AppComponent]
