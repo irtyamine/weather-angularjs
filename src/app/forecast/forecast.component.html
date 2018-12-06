@@ -4,13 +4,11 @@
   <div class="container-weather" *ngFor="let weather of forecast.weather">
     Description {{ weather.description }}
   </div>
-  <div>Max {{ forecast.main.temp_max }}&deg;</div>
-  <div>Min {{ forecast.main.temp_min }}&deg;</div>
-  <button (click)="getForecast()">Refresh</button>
+  <div class="container-max">Max {{ forecast.main.temp_max }}&deg;</div>
+  <div class="container-min">Min {{ forecast.main.temp_min }}&deg;</div>
+  <button class="container-button" (click)="getForecast()">Refresh</button>
 </div>
 <div *ngIf="error">
   {{error}}
 </div>
-<div *ngIf="!error && !forecast">
-    Loading
-</div>
+<div *ngIf="!error && !forecast" class="container-loader "></div>
