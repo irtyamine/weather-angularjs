@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { CurrentComponent } from './current/current.component';
 import { WeatherService } from './weather.service';
+import { MatProgressSpinnerModule } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { LoaderService } from './loader.service';
 import {HttpModule} from '@angular/http';
 
 @NgModule({
@@ -17,9 +20,12 @@ import {HttpModule} from '@angular/http';
   imports: [
     BrowserModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
+    // MatProgressSpinnerModule
   ],
-  providers: [WeatherService],
+  providers: [WeatherService,
+    LoaderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

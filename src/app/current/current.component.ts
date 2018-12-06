@@ -9,28 +9,30 @@ import { LoaderService } from "../loader.service";
   styleUrls: ["./current.component.css"]
 })
 export class CurrentComponent implements OnInit {
-  myWeather:CurrentWeather;
-
+  myWeather: CurrentWeather;
+  errorMessage = true;
   weather: any;
+  
 
-  constructor(private _weatherService: WeatherService, public _loaderService: LoaderService) {}
+  constructor(private _weatherService: WeatherService, private _loaderService: LoaderService) {}
 
   ngOnInit() {
     
     if (!navigator.geolocation) {
-      console.log("<p>Geolocation is not supported by your browser</p>");
+      this.errorMessage = true;
       return;
     }
 
     const success = pos => {
+      this.errorMessage= false;
+      this._loaderService.display(false);
       let lat = pos.coords.latitude;
       const lon = pos.coords.longitude;
       this._weatherService.getWeather(lon, lat)
         .subscribe(
           response => {
-        this.weather = response;
-        this._loaderService.display(false);
-        console.log("this is the silly thing i was trying to do ",response);
+            console.log(response);
+            this.weather = response;
         this.myWeather = new CurrentWeather(response.name,
                                             response.main.temp,
                                             response.weather[0].icon,
@@ -40,7 +42,9 @@ export class CurrentComponent implements OnInit {
       });
     };
     function error() {
-      console.log("Unable to retrieve your location");
+      console.log("this is an error buddy");
+      this.errorMessage = true;
+      
     }
     navigator.geolocation.getCurrentPosition(success, error);
   }

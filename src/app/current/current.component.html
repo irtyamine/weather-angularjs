@@ -1,8 +1,9 @@
-<div class="container">
-  <h3>Name of Area {{ myWeather.city }}</h3>
+<div class="container" *ngIf="!errorMessage">
+  <h3>Name of Area {{ myWeather.city }} toasty</h3>
   <h3>Temperature {{ myWeather.temp }}&deg;</h3>
 
-  <h3>Description of weather {{ myWeather.weatherDescription }}</h3>
+  <h3>Description {{ myWeather.weatherDescription }}</h3>
   <h3>Max {{ myWeather.tempMax }}&deg;</h3>
   <h3>Min {{ myWeather.tempMin }}&deg;</h3>
 </div>
+<div *ngIf="errorMessage">Welcome to my Weather app, please accept our request to get your GPS location for the latest weather updates.</div>
