@@ -36,9 +36,10 @@ export class ForecastComponent implements OnInit {
     this.forecast = undefined;
     // 'this' refers to the class now
     this._weatherService.getWeather(position.coords.longitude, position.coords.latitude).then((response) => {
-      this.forecast = response;
+    this.forecast = response;
+      
     }, (error) => {
-      //error.statusCode
+      //error.statusCode if API fails
       this.error = 'Unable to get the weather, service currently unavailable.';
     });
   }

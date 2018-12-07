@@ -1,8 +1,10 @@
-<div class="container" *ngIf="forecast">
+<div class="container container__neutral" *ngIf="forecast"
+[ngClass]="{'container__red': forecast.weather[0].icon === '04d'}"
+>
   <div class="container-area">Suburb {{ forecast.name }}</div>
   <div class="container-temp">Temperature {{ forecast.main.temp | toCelcuis }}</div>
   <div class="container-weather" *ngFor="let weather of forecast.weather">
-   {{ weather.description }}
+   {{ weather.description }} {{weather.icon}}
    <div class="container-weather-icon"><img [src]="'http://openweathermap.org/img/w/'+ weather.icon +'.png'"></div>
   </div>
   <div class="container-max">Max {{ forecast.main.temp_max | toCelcuis }}</div>

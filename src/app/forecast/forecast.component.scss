@@ -4,11 +4,18 @@
     box-shadow: 0 6px 13px 0 rgba(0,0,0,0.2);
     margin-left: auto;
     margin-right: auto;
+    padding: 3px;
     width: 20em;
     height: 15em;
 
+    &__neutral{
+        background-color: grey;
+    }
+    &__red {
+        background-color: red !important;
+    }
+
     &-area {
-        background-color:#fff740;
         text-align:center;
         font-size: 25px;
         padding-top: 5px;
@@ -60,6 +67,14 @@
             100% {transform: rotate(360deg); }
         }
     }
+}
+
+.warmWeatherbg {
+    background-color:#fff740;
+}
+
+.cloudyWeatherbg {
+    background-color:#a3a3a3;
 }
 
 .weather-icon {
