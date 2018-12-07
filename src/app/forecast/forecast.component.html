@@ -1,16 +1,16 @@
-<div class="container container__neutral" *ngIf="forecast" [ngClass]="currentIconClass">
-  <div class="container-area">Suburb {{ forecast.name }}</div>
-  <div class="container-temp">Temperature {{ forecast.main.temp | toCelcuis }}</div>
-  <div class="container-weather" *ngFor="let weather of forecast.weather">
+<div class='container container__neutral' *ngIf='forecast' [ngClass]='currentIconClass'>
+  <div class='container-area'>Suburb {{ forecast.name }}</div>
+  <div class='container-temp'>Temperature {{ forecast.main.temp | toCelcuis }}</div>
+  <div class='container-weather' *ngFor='let weather of forecast.weather'>
    {{ weather.description }} {{weather.icon}}
-   <div class="container-weather-icon"><img [src]="'http://openweathermap.org/img/w/'+ weather.icon +'.png'"></div>
+   <div class='container-weather-icon'><img [src]="http://openweathermap.org/img/w/'+ weather.icon +'.png'"></div>
   </div>
-  <div class="container-max">Max {{ forecast.main.temp_max | toCelcuis }}</div>
-  <div class="container-min">Min {{ forecast.main.temp_min | toCelcuis }}</div>
-  <button class="container-button" (click)="getForecast()">Refresh</button>
+  <div class='container-max'>Max {{ forecast.main.temp_max | toCelcuis }}</div>
+  <div class='container-min'>Min {{ forecast.main.temp_min | toCelcuis }}</div>
+  <button class='container-button' (click)='getForecast()'>Refresh</button>
 </div>
-<div *ngIf="error" class="container container-area">
+<div *ngIf='error' class='container container-area'>
   {{ error }}
-    <img class="container container-area" src="../../assets/img/sadSmiley.svg">
+    <img class='container container-area' src='../../assets/img/sadSmiley.svg'>
 </div>
-<div *ngIf="!error && !forecast" class="container-loader "></div>
+<div *ngIf='!error && !forecast' class='container-loader '></div>
