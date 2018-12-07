@@ -1,11 +1,12 @@
 <div class="container" *ngIf="forecast">
   <div class="container-area">Suburb {{ forecast.name }}</div>
-  <div class="container-temp">Temperature {{ forecast.main.temp }}&deg;</div>
+  <div class="container-temp">Temperature {{ forecast.main.temp | toCelcuis}}</div>
   <div class="container-weather" *ngFor="let weather of forecast.weather">
    {{ weather.description }}
+   <div class="container-weather-icon"><img [src]="'http://openweathermap.org/img/w/'+ weather.icon +'.png'"></div>
   </div>
-  <div class="container-max">Max {{ forecast.main.temp_max }}&deg;</div>
-  <div class="container-min">Min {{ forecast.main.temp_min }}&deg;</div>
+  <div class="container-max">Max {{ forecast.main.temp_max | toCelcuis }}&deg;</div>
+  <div class="container-min">Min {{ forecast.main.temp_min | toCelcuis}}&deg;</div>
   <button class="container-button" (click)="getForecast()">Refresh</button>
 </div>
 <div *ngIf="error" class="container container-area">
@@ -13,4 +14,3 @@
 </div>
 <div *ngIf="!error && !forecast" class="container-loader "></div>
 
-<div class="weather-icon"><img href="">unknown</div>
