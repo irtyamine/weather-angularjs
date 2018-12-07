@@ -8,11 +8,23 @@
     width: 20em;
     height: 15em;
 
-    &__neutral{
-        background-color: grey;
+    &__neutral {
+        background-color: rgb(236, 234, 109);
     }
-    &__red {
-        background-color: red !important;
+    &__yellow {
+        background-color: #dfd549 !important;
+    }
+    &__cloudy {
+        background-color: #faf0b1 !important;
+    }
+    &__overCast {
+        background-color: #a3a3a3 !important;
+    }
+    &__rainy {
+        background-color: #8895ad !important;
+    }
+    &__stormy {
+        background-color: #707fb6 !important;
     }
 
     &-area {

@@ -1,0 +1,16 @@
+export const ICON_CLASS_MAP = {
+  '01d': 'container__yellow',
+  '01n': 'container__yellow',
+  '02d': 'container___cloudy',
+  '02n': 'container___cloudy',
+  '03d': 'container__overCast',
+  '03n': 'container__overCast',
+  '04d': 'container__grey',
+  '04n': 'container__grey',
+  '09d': 'container__rainy',
+  '09n': 'container__rainy',
+  '10d': 'container__rainy',
+  '10n': 'container__rainy',
+  '11d': 'container__stormy',
+  '11n': 'container__stormy',
+};

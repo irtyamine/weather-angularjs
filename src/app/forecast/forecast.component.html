@@ -1,6 +1,4 @@
-<div class="container container__neutral" *ngIf="forecast"
-[ngClass]="{'container__red': forecast.weather[0].icon === '04d'}"
->
+<div class="container container__neutral" *ngIf="forecast" [ngClass]="currentIconClass">
   <div class="container-area">Suburb {{ forecast.name }}</div>
   <div class="container-temp">Temperature {{ forecast.main.temp | toCelcuis }}</div>
   <div class="container-weather" *ngFor="let weather of forecast.weather">
@@ -16,4 +14,3 @@
     <img class="container container-area" src="../../assets/img/sadSmiley.svg">
 </div>
 <div *ngIf="!error && !forecast" class="container-loader "></div>
-
