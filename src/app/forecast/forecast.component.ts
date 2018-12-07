@@ -24,11 +24,12 @@ export class ForecastComponent implements OnInit {
   }
 
   getForecast() {
+    this.forecast = undefined;
     navigator.geolocation.getCurrentPosition(this.successHandler.bind(this), this.errorHandler.bind(this));
   }
 
   errorHandler() {
-    this.error = 'unable to get location';
+    this.error = 'Unable to get the weather, please accept gps location request.';
   }
 
   successHandler(position) {
@@ -38,7 +39,7 @@ export class ForecastComponent implements OnInit {
       this.forecast = response;
     }, (error) => {
       //error.statusCode
-      this.error = 'unable to get the weather';
+      this.error = 'Unable to get the weather, service currently unavailable.';
     });
   }
 }
