@@ -3,7 +3,7 @@
   <div class='container-temp'>Temperature {{ forecast.main.temp | toCelcuis }}</div>
   <div class='container-weather' *ngFor='let weather of forecast.weather'>
    {{ weather.description }} {{weather.icon}}
-   <div class='container-weather-icon'><img [src]="http://openweathermap.org/img/w/'+ weather.icon +'.png'"></div>
+   <div class='container-weather-icon'><img src="http://openweathermap.org/img/w/{{weather.icon}}.png"></div>
   </div>
   <div class='container-max'>Max {{ forecast.main.temp_max | toCelcuis }}</div>
   <div class='container-min'>Min {{ forecast.main.temp_min | toCelcuis }}</div>
